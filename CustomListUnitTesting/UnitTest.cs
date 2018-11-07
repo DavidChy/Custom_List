@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomList;
 
-namespace CustomListUnitTesting
+namespace CustomListUnitTest
 {
     [TestClass]
     public class AddTestMethod
@@ -35,6 +35,18 @@ namespace CustomListUnitTesting
         }
 
         [TestMethod]
+        public void AddTestMethod3()
+        {
+            CustomList<int> list = new CustomList<int>();
+            int expected = 16;
+
+            list.Add(16);
+            list.Add(17);
+
+            Assert.AreEqual(expected, list[0]);
+        }
+
+        [TestMethod]
         public void AddVariable_CheckIndex0_ReturnsSameVariable()
         {
             //Arrange
@@ -47,18 +59,19 @@ namespace CustomListUnitTesting
             //Assert
             Assert.AreEqual(value, myList[0]);
         }
-        //[TestMethod]
-        //public void Indexer_GetValue_ReturnGetValue()
-        //{
-        //    //Arrange
-        //    CustomList<int> testList = new CustomList<int>();
-        //    int i = 0;
 
-        //    //Act
-        //    testList.Add(1);
+        [TestMethod]
+        public void Indexer_GetValue_ReturnGetValue()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int i = 0;
 
-        //    //Assert
-        //    Assert.AreEqual(1, testList[i]);
-        //}
+            //Act
+            testList.Add(1);
+
+            //Assert
+            Assert.AreEqual(1, testList[i]);
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace CustomList
     public class CustomList<T>
     {
         T[] array = new T[1];
+        private int count;
+        private int length;
+
         public int Count
         {
             get
@@ -16,9 +19,7 @@ namespace CustomList
                 return count;
             }
         }
-        private int count;
 
-        
         public int Length
         {
             get
@@ -26,35 +27,18 @@ namespace CustomList
                 return length;
             }
         }
-        private int length;
 
         public T this[int i]
         {
             get
             {
-                if (i < 0 || i >= Count)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                else
-                {
-                    return array[i];
-                }
+                return array[i];
             }
             set
             {
-                if (i < 0 || i >= Count)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                else
-                {
-                    array[i] = value;
-                }
+                array[i] = value;
             }
         }
-
-
 
         public CustomList()
         {
@@ -72,6 +56,7 @@ namespace CustomList
             array[count] = toAdd;
             count++;
         }
+
 
         public int increaseList(int length)
         {
