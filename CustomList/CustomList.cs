@@ -47,17 +47,6 @@ namespace CustomList
             array = new T[length];
         }
 
-        public void Add(T toAdd)
-        {
-            if (count >= length - 1)
-            {
-                increaseList(length);
-            }
-            array[count] = toAdd;
-            count++;
-        }
-
-
         public int increaseList(int length)
         {
             length = count + 1;
@@ -70,5 +59,31 @@ namespace CustomList
             array = newArray;
             return length;
         }
+
+        public void Add(T v)
+        {
+            if (count >= length - 1)
+            {
+                increaseList(length);
+            }
+            array[count] = v;
+            count++;
+        }
+
+        public bool Remove(T v)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (array[i].Equals(v))
+                {
+                    array[i] = array[i + 1];
+                    i++;
+                }
+            }
+            count--;
+            length--;
+            return true;
+        }
+
     }
 }

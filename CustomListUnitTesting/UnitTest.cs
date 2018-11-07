@@ -7,6 +7,7 @@ namespace CustomListUnitTest
     [TestClass]
     public class UnitTest
     {
+        // ADD TESTS--------------------------------------------------
 
         [TestMethod]
         public void AddTestMethod1()
@@ -85,19 +86,36 @@ namespace CustomListUnitTest
             Assert.AreEqual(expected, list[3]);
         }
 
+        // REMOVE TESTS--------------------------------------------------
+
         [TestMethod]
-        public void AddVar_CheckIndex0_ReturnsSameVar()
+        public void Remove_IntFromList_ReturnsInt()
         {
             // Arrange
-            CustomList<int> myList = new CustomList<int>();
-            int value = 10;
+            CustomList<int> list = new CustomList<int>() { 1, 2, 3, 4, 5 };
+            int expected = 4;
 
             // Act
-            myList.Add(value);
+            list.Remove(3);
 
             // Assert
-            Assert.AreEqual(value, myList[0]);
+            Assert.AreEqual(expected, list[2]);
         }
+
+
+        //[TestMethod]
+        //public void Add_CheckIndex0_ReturnsSameVar()
+        //{
+        //    // Arrange
+        //    CustomList<int> myList = new CustomList<int>();
+        //    int value = 10;
+
+        //    // Act
+        //    myList.Add(value);
+
+        //    // Assert
+        //    Assert.AreEqual(value, myList[0]);
+        //}
 
         //[TestMethod]
         //public void Indexer_GetValue_ReturnGetValue()
