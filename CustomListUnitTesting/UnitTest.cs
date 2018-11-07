@@ -86,7 +86,7 @@ namespace CustomListUnitTest
         }
 
         [TestMethod]
-        public void AddValue_CheckIndex0_ReturnsSameValue()
+        public void AddVar_CheckIndex0_ReturnsSameVar()
         {
             // Arrange
             CustomList<int> myList = new CustomList<int>();
