@@ -86,5 +86,20 @@ namespace CustomList
             }
             return removeCheck;
         }
+
+        public override string ToString()
+        {
+            string newString = "";
+
+            newString = array[0].ToString();
+
+            for(int i = 1; i < count; i++)
+            {
+                newString = newString + " " + array[i].ToString();
+            }
+            return newString;
+        }
+
+        
     }
 }

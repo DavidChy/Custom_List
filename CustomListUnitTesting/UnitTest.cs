@@ -150,42 +150,61 @@ namespace CustomListUnitTest
 
 
         [TestMethod]
-        public void TwoOfThreeRemove()
+        public void Remove_TwoStringsFromList_ReturnsOneString()
         {
-            //Arrange
+            // Arrange
             CustomList<string> list = new CustomList<string>();
             string expected = "goose";
 
-            //Act
+            // Act
             list.Add("maverick");
             list.Add("iceman");
             list.Add("goose");
             list.Remove("maverick");
             list.Remove("iceman");
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, list[0]);
         }
 
         [TestMethod]
         public void Remove_StringFromList_Remove1String()
         {
-            //Arrange
+            // Arrange
             CustomList<string> list = new CustomList<string>();
             string expected = "String 2.";
 
-            //Act
+            // Act
             list.Add("String 1.");
             list.Add("String 2.");
             list.Add("String 3.");
             list.Add("String 4.");
-            list.Remove("String 1.");//Removes matching item and remaining content shifts forward on list.
+            list.Remove("String 1."); //Removes matching item and remaining content shifts forward on list.
 
 
-            //Assert
-            Assert.AreEqual(expected, list[0]);//Content at index after removing one item.
+            // Assert
+            Assert.AreEqual(expected, list[0]); //Content at index after removing one item.
         }
 
+        [TestMethod]
 
+        public void ToString_ConvertIntToString_ReturnsString()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            string expected = "4 20";
+            int num1 = 4;
+            int num2 = 20;
+
+            // Act
+            list.Add(num1);
+            list.Add(num2);
+            string intoWords = list.ToString();
+
+            // Assert
+            Assert.AreEqual(expected, intoWords);
+
+
+        }
     }
 }
