@@ -149,33 +149,43 @@ namespace CustomListUnitTest
         }
 
 
+        [TestMethod]
+        public void TwoOfThreeRemove()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            string expected = "goose";
 
-        //[TestMethod]
-        //public void Add_CheckIndex0_ReturnsSameVar()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int value = 10;
+            //Act
+            list.Add("maverick");
+            list.Add("iceman");
+            list.Add("goose");
+            list.Remove("maverick");
+            list.Remove("iceman");
 
-        //    // Act
-        //    myList.Add(value);
+            //Assert
+            Assert.AreEqual(expected, list[0]);
+        }
 
-        //    // Assert
-        //    Assert.AreEqual(value, myList[0]);
-        //}
+        [TestMethod]
+        public void Remove_StringFromList_Remove1String()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            string expected = "String 2.";
 
-        //[TestMethod]
-        //public void Indexer_GetValue_ReturnGetValue()
-        //{
-        //    // Arrange
-        //    CustomList<int> testList = new CustomList<int>();
-        //    int i = 0;
+            //Act
+            list.Add("String 1.");
+            list.Add("String 2.");
+            list.Add("String 3.");
+            list.Add("String 4.");
+            list.Remove("String 1.");//Removes matching item and remaining content shifts forward on list.
 
-        //    //Act
-        //    testList.Add(1);
 
-        //    //Assert
-        //    Assert.AreEqual(1, testList[i]);
-        //}
+            //Assert
+            Assert.AreEqual(expected, list[0]);//Content at index after removing one item.
+        }
+
+
     }
 }
