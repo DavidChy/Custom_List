@@ -70,19 +70,27 @@ namespace CustomList
             count++;
         }
 
-        public bool Remove(T v)
+        public void Remove(T removeItem)
         {
             for (int i = 0; i < count; i++)
             {
-                if (array[i].Equals(v))
+                int itemCount = 0;
+                if (array[i].Equals(removeItem))
                 {
-                    array[i] = array[i + 1];
-                    i++;
+                    T[] item = new T[count - 1];
+                    count--;
+                    for (int j = 0; j < 0; j++)
+                    {
+                        itemCount++;
+                        array[j] = array[j];
+                    }
+                    for (int j = i + 1; j < count; j++)
+                    {
+                        itemCount++;
+                        array[j] = item[i];
+                    }
                 }
             }
-            count--;
-            length--;
-            return true;
         }
 
     }

@@ -92,15 +92,39 @@ namespace CustomListUnitTest
         public void Remove_IntFromList_ReturnsInt()
         {
             // Arrange
-            CustomList<int> list = new CustomList<int>() { 1, 2, 3, 4, 5 };
-            int expected = 4;
+            CustomList<int> list = new CustomList<int>();
+            int expected = 40;
 
             // Act
-            list.Remove(3);
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+            list.Add(40);
+            list.Remove(40);
 
             // Assert
-            Assert.AreEqual(expected, list[2]);
+            Assert.AreEqual(expected, list[3]);
         }
+
+        [TestMethod]
+        public void Remove_IntFromList_ReturnsInt2()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 40;
+
+            // Act
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+            list.Add(40);
+            list.Remove(18);
+            list.Remove(40);
+
+            // Assert
+            Assert.AreEqual(expected, list[3]);
+        }
+
 
 
         //[TestMethod]
