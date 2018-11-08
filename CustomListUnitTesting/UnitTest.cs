@@ -93,21 +93,43 @@ namespace CustomListUnitTest
         {
             // Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected = 40;
+            int expected = 17;
 
             // Act
             list.Add(16);
             list.Add(17);
             list.Add(18);
             list.Add(40);
-            list.Remove(40);
+            list.Remove(16);
 
             // Assert
-            Assert.AreEqual(expected, list[3]);
+            Assert.AreEqual(expected, list[0]);
         }
 
         [TestMethod]
         public void Remove_IntFromList_ReturnsInt2()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 30;
+
+            // Act
+            list.Add(10);
+            list.Add(20);
+            list.Add(30);
+            list.Add(40);
+            list.Add(50);
+            list.Add(60);
+            list.Add(70);
+            list.Add(80);
+            list.Remove(20);
+
+            // Assert
+            Assert.AreEqual(expected, list[1]);
+        }
+
+        [TestMethod]
+        public void Remove_IntFromList_ReturnsInt3()
         {
             // Arrange
             CustomList<int> list = new CustomList<int>();
@@ -118,11 +140,12 @@ namespace CustomListUnitTest
             list.Add(17);
             list.Add(18);
             list.Add(40);
+            list.Remove(17);
             list.Remove(18);
-            list.Remove(40);
+            
 
             // Assert
-            Assert.AreEqual(expected, list[3]);
+            Assert.AreEqual(expected, list[1]);
         }
 
 

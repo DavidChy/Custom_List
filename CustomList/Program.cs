@@ -10,8 +10,14 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomList<int> myList = new CustomList<int>();
-            Console.ReadLine();
+            CustomList<int> list = new CustomList<int>();
+
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+            list.Add(40);
+            list.Remove(17);
+            list.Remove(18);
         }
     }
 }
