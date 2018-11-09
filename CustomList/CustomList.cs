@@ -41,50 +41,44 @@ namespace CustomList
         // ADD
         public void Add(T toAdd)
         {
-            if (count >= capacity - 1)
-            {
-                increaseList(capacity);
-            }
-            array[count] = toAdd;
             count++;
-        }
+            T[] newArray;
 
-        public int increaseList(int capacity)
-        {
-            capacity = count + 1;
-            T[] newArray = new T[capacity];
-
-            for (int i = 0; i < array.Length; i++)
+            if (count > capacity)
             {
-                newArray[i] = array[i];
+                capacity *= 2;
+                newArray = new T[capacity];
+
+                for (int i = 0; i < count - 1; i++)
+                {
+                    newArray[i] = array[i];
+                }
+
+                newArray[count - 1] = toAdd;
+                array = newArray;
             }
-            array = newArray;
-            return capacity;
+            else
+            {
+                array[count - 1] = toAdd;
+            }
         }
 
         // REMOVE
-        public bool Remove(T toRemove)
+        public void Remove(T toRemove)
         {
-            bool removeCheck = false;
-
             for (int i = 0; i < count; i++)
             {
                 if (array[i].Equals(toRemove))
                 {
-                    array[i] = array[i + 1];
-                    i++;
-                    for (int j = i; j < count; j++)
+                    count--;
+                    for (; i < count; i++)
                     {
-                        array[j] = array[j + 1];
-                        removeCheck = true;
-                        count--;
+                        array[i] = array[i + 1];
                     }
-                }
-                else
-                {
+                    array[count] = default(T);
+                    break;
                 }
             }
-            return removeCheck;
         }
 
         public override string ToString()
