@@ -133,19 +133,6 @@ namespace CustomList
             return result;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                yield return array[i];
-            }
-        }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return GetEnumerator();
-        //}
-
         public CustomList<T> Zip(CustomList<T> list2)
         {
             CustomList<T> result = new CustomList<T>();
@@ -163,5 +150,6 @@ namespace CustomList
 
             return result;
         }
+
     }
 }
