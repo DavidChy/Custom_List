@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> //: IEnumerable<T>
     {
         public T[] array = new T[1];
         private int count;
         private int capacity;
+        public T[] newArray;
 
         // COUNT
         public int Count
@@ -94,6 +95,73 @@ namespace CustomList
             return newString;
         }
 
-        
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> result;
+
+            result = list1;
+            foreach (T item in list2)
+            {
+                result.Add(item);
+            }
+
+            return result;
+        }
+
+        public static CustomList<T> operator -(CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> result = new CustomList<T>();
+            if (list1.count > list2.count)
+            {
+                for (int i = list2.count; i < list1.count; i++)
+                {
+                    result.Add(list1[i]);
+                }
+            }
+            else if (list2.count > list1.count)
+            {
+                for (int i = list1.count; i < list2.count; i++)
+                {
+                    result.Add(list2[i]);
+                }
+            }
+            else
+            {
+                return result;
+            }
+
+            return result;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return array[i];
+            }
+        }
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator();
+        //}
+
+        public CustomList<T> Zip(CustomList<T> list2)
+        {
+            CustomList<T> result = new CustomList<T>();
+            for (int i = 0; i < count + list2.count; i++)
+            {
+                if (i < count)
+                {
+                    result.Add(array[i]);
+                }
+                if (i < list2.count)
+                {
+                    result.Add(list2[i]);
+                }
+            }
+
+            return result;
+        }
     }
 }
